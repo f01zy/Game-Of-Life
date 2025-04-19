@@ -6,8 +6,11 @@
 #include <string>
 #include <thread>
 
+void black(int cell) { std::cout << "\033[48;5;0m" << cell << "\033[0m"; }
+void white(int cell) { std::cout << "\033[48;5;15m" << cell << "\033[0m"; }
+
 const int WIDTH = 50;
-const int HEIGHT = 20;
+const int HEIGHT = 25;
 
 int map[HEIGHT][WIDTH];
 
@@ -38,7 +41,12 @@ void readMap() {
 void print() {
   for (int i = 0; i < HEIGHT; i++) {
     for (int j = 0; j < WIDTH; j++) {
-      std::cout << map[i][j];
+      int cell = map[i][j];
+
+      if (cell == 0)
+        black(cell);
+      else
+        white(cell);
     }
     std::cout << std::endl;
   }
@@ -108,7 +116,7 @@ int main() {
     clear();
     print();
     check();
-    sleep(1);
+    sleep(0.5);
   }
 
   return 0;
