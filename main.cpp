@@ -6,9 +6,6 @@
 #include <string>
 #include <thread>
 
-using std::cout;
-using std::endl;
-
 const int WIDTH = 50;
 const int HEIGHT = 20;
 
@@ -41,9 +38,9 @@ void readMap() {
 void print() {
   for (int i = 0; i < HEIGHT; i++) {
     for (int j = 0; j < WIDTH; j++) {
-      cout << map[i][j];
+      std::cout << map[i][j];
     }
-    cout << endl;
+    std::cout << std::endl;
   }
 }
 
@@ -81,7 +78,8 @@ void checkNeighbors(int &alive, int &dead, int i, int j) {
 }
 
 void check() {
-  int newMap[HEIGHT][WIDTH] = {0};
+  int newMap[HEIGHT][WIDTH]{};
+
   for (int i = 0; i < HEIGHT; i++) {
     for (int j = 0; j < WIDTH; j++) {
       int alive = 0;
